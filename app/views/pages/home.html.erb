@@ -1,0 +1,24 @@
+<h1>Pages#home</h1>
+<p><%= link_to "Check out my posts!", posts_path %></p>
+<%= turbo_frame_tag("ivs_player") do %>
+  <script src="https://player.live-video.net/1.24.0/amazon-ivs-player.min.js"></script>
+  <div id="amazon-ivs">
+    <video id="ivs-video"
+      autoplay
+      controls
+      playsinline
+      style="max-height: 500px; max-width: 500px"
+    ></video>
+  </div>
+  <script>
+    const url="https:my_url_omegalul"
+    if (!IVSPlayer.isPlayerSupported) {
+      alert("Your browser does not support the Amazon IVS player.");
+    }
+    const player = IVSPlayer.create();
+    const video_target = document.getElementById("ivs-video");
+    player.attachHTMLVideoElement(video_target);
+    player.load(url);
+    player.play();
+  </script>
+<% end %>
